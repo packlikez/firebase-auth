@@ -1,12 +1,12 @@
-import {Request, Response, NextFunction} from "express";
+import { Request, Response, NextFunction } from "express";
 import * as Joi from "joi";
 
 import taskService from "./task.service";
 import validator from "../../utils/validator";
 
-const createTaskSchema = Joi.object({title: Joi.string().trim().required()});
+const createTaskSchema = Joi.object({ title: Joi.string().trim().required() });
 
-const updateTaskSchema = Joi.object({done: Joi.boolean().required()});
+const updateTaskSchema = Joi.object({ done: Joi.boolean().required() });
 
 const taskIdSchema = Joi.string().required();
 
@@ -16,7 +16,7 @@ class TaskController {
       const tasks = await taskService.getTasks();
       if (tasks.error) throw tasks.error;
 
-      return res.send({data: tasks.data});
+      return res.send({ data: tasks.data });
     } catch (e) {
       return next(e);
     }
@@ -29,7 +29,7 @@ class TaskController {
       const newTask = await taskService.createTask(task);
       if (newTask.error) throw newTask.error;
 
-      return res.send({data: newTask.data});
+      return res.send({ data: newTask.data });
     } catch (e) {
       return next(e);
     }
@@ -43,7 +43,7 @@ class TaskController {
       const updatedTask = await taskService.updateTask(taskId, task);
       if (updatedTask.error) throw updatedTask.error;
 
-      return res.send({data: updatedTask.data});
+      return res.send({ data: updatedTask.data });
     } catch (e) {
       return next(e);
     }
@@ -57,7 +57,7 @@ class TaskController {
       const newSubTask = await taskService.createSubTask(taskId, task);
       if (newSubTask.error) throw newSubTask.error;
 
-      return res.send({data: newSubTask.data});
+      return res.send({ data: newSubTask.data });
     } catch (e) {
       return next(e);
     }
@@ -70,13 +70,13 @@ class TaskController {
       const task = validator(updateTaskSchema, req.body);
 
       const updatedSubTask = await taskService.updateSubTask(
-          taskId,
-          subTaskId,
-          task
+        taskId,
+        subTaskId,
+        task
       );
       if (updatedSubTask.error) throw updatedSubTask.error;
 
-      return res.send({data: updatedSubTask.data});
+      return res.send({ data: updatedSubTask.data });
     } catch (e) {
       return next(e);
     }
