@@ -1,5 +1,5 @@
 import * as functions from "firebase-functions";
-import * as express from "express";
+import express from "express";
 
 import taskRouter from "./task/task.route";
 import middlewareErrorHandler from "../app/middlewares/errorHandler";

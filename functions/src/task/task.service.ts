@@ -1,4 +1,4 @@
-import * as Boom from "@hapi/boom";
+import Boom from "@hapi/boom";
 import { ServiceResponse } from "../../app/type";
 import taskModel from "./task.model";
 

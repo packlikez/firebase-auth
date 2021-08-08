@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import * as Joi from "joi";
+import Joi from "joi";
 
 import taskService from "./task.service";
 import validator from "../../utils/validator";

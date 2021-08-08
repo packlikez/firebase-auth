@@ -1,5 +1,5 @@
 import { ErrorRequestHandler } from "express";
-import * as Boom from "@hapi/boom";
+import Boom from "@hapi/boom";
 
 const middlewareErrorHandler: ErrorRequestHandler = (
   err: Boom.Boom,
